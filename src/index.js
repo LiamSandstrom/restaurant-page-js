@@ -1,59 +1,78 @@
 import "./styles.css";
 import { homepage } from "./homepage.js";
 import { booking } from "./booking.js";
+import { menu } from "./menu.js";
+import { about } from "./about.js";
 import { renderFooter } from "./footer";
 
 class pageHandler {
   constructor() {
     this.homepage = new homepage();
     this.booking = new booking();
-
-    this.currentPage = this.homepage;
+    this.menu = new menu(); 
+    this.about = new about();
   }
+
   init() {
-    this.currentPage.render();
+    this.setHomePage();
     renderFooter();
-    this.fadeIn();
   }
 
-  setBooking() {
+  setBookingPage() {
     if (this.currentPage === this.booking) return;
     this.changePage(this.booking);
+    console.log("changed to booking");
   }
 
-  setHomepage() {
+  setHomePage() {
     if (this.currentPage === this.homepage) return;
     this.changePage(this.homepage);
+    console.log("changed to home");
   }
 
-  fadeIn() {
-    if (this.currentPage.getDiv() == undefined) return;
-    setTimeout(() => {
-      this.currentPage.getDiv().style.opacity = "100%";
-    }, 10);
+  setMenuPage() {
+    if (this.currentPage === this.menu) return;
+    this.changePage(this.menu);
+    console.log("changed to menu");
+  }
+
+  setAboutPage(){
+    if(this.currentPage === this.about) return;
+    this.changePage(this.about);
+    console.log("changed to about");
   }
 
   changePage(newPage) {
-    console.log("change");
-    this.currentPage.remove();
+    if (this.currentPage != null) {
+      this.currentPage.remove();
+    }
     this.currentPage = newPage;
     this.currentPage.render();
-    this.fadeIn();
   }
 }
+  const myPageHandler = new pageHandler();
+  myPageHandler.init();
+
 
 (() => {
   const title = document.querySelector("#title");
   const bookingBtn = document.querySelector("#booking-btn");
-
-  const myPageHandler = new pageHandler();
-  myPageHandler.init();
+  const menuBtn = document.querySelector("#menu-btn")
+  const aboutBtn = document.querySelector("#about-btn")
 
   title.addEventListener("click", () => {
-    myPageHandler.setHomepage();
+    myPageHandler.setHomePage();
   });
 
   bookingBtn.addEventListener("click", () => {
-    myPageHandler.setBooking();
+    myPageHandler.setBookingPage();
+  });
+
+  menuBtn.addEventListener("click", () => {
+    myPageHandler.setMenuPage();
+  });
+
+  aboutBtn.addEventListener("click", () => {
+    myPageHandler.setAboutPage();
   });
 })();

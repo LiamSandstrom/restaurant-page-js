@@ -1,40 +1,36 @@
 import rest1 from "./restaurant-1.jpg";
+import { page } from "./page.js";
 
-export class homepage {
-  #homeDiv;
+export class homepage extends page {
   #restImg;
   #title;
 
   constructor() {
-    this.content = document.querySelector("#content");
+    super();
     this.remove = this.remove.bind(this);
     this.render = this.render.bind(this);
   }
 
   render() {
+    if(!super.render()) return;
+
+    //if already rendered
+
     this.#restImg = new Image();
 
     //create div
-    this.#homeDiv = document.createElement("div");
-    this.#homeDiv.classList.add("home-container");
-    this.content.appendChild(this.#homeDiv);
-    setTimeout(this.fadeIn, 10);
+    this.getDiv().classList.add("home-container");
+    this.getDiv().classList.add("page");
 
     //create #title
     this.#title = document.createElement("h1");
     this.#title.textContent = "Welcome to [Restaurant]";
-    this.#homeDiv.appendChild(this.#title);
+    this.getDiv().appendChild(this.#title);
 
     //create img
     this.#restImg.src = rest1;
     this.#restImg.classList.add("home-img");
     this.#restImg.classList.add("full-img");
-    this.#homeDiv.appendChild(this.#restImg);
+    this.getDiv().appendChild(this.#restImg);
   }
-
-  remove() {
-    this.content.removeChild(this.#homeDiv);
-  }
-
-  getDiv = () => this.#homeDiv;
 }

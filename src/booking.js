@@ -1,5 +1,4 @@
-export class booking {
-  render() {}
-  remove() {}
-  getDiv() {}
+import {page} from "./page.js";
+
+export class booking extends page{
 }

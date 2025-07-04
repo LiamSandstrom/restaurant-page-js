@@ -32,6 +32,7 @@ h1 {
   text-align: center;
 }
 
+/*----- Navbar -----*/
 nav {
   position: fixed;
   z-index: 2;
@@ -63,8 +64,8 @@ button {
   cursor: pointer;
   border: none;
   outline: 1px solid var(--text-color);
-  border-radius: 5px;
-  padding: 5px 20px;
+  border-radius: 3px;
+  padding: 5px 25px;
 }
 
 button:hover {
@@ -72,15 +73,17 @@ button:hover {
   outline: 2px solid var(--text-hover-color);
 }
 
+/*----- general content -----*/
 #content {
   overflow: hidden;
 }
 
-.home-container, .booking-container{
+.page{
   opacity: 0%;
   transition: opacity 0.5s;
 }
 
+/*----- homepage -----*/
 .home-container {
   display: flex;
   justify-content: center;
@@ -101,15 +104,8 @@ button:hover {
   object-position: center center;
   height: calc(100vh - var(--footer-height));
 }
-
-.full-img {
-}
-
-.half-img {
-  height: 50vh;
-  width: 100vw;
-}
-
+  
+/* ----- footer ----- */
 .footer {
   height: var(--footer-height);
   display: flex;
