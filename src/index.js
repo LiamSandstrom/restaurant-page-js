@@ -2,7 +2,6 @@ import "./styles.css";
 import { homepage } from "./homepage.js";
 import { booking } from "./booking.js";
 import { menu } from "./menu.js";
-import { about } from "./about.js";
 import { renderFooter } from "./footer";
 
 class pageHandler {
@@ -10,7 +9,6 @@ class pageHandler {
     this.homepage = new homepage();
     this.booking = new booking();
     this.menu = new menu(); 
-    this.about = new about();
   }
 
   init() {
@@ -58,7 +56,6 @@ class pageHandler {
   const title = document.querySelector("#title");
   const bookingBtn = document.querySelector("#booking-btn");
   const menuBtn = document.querySelector("#menu-btn")
-  const aboutBtn = document.querySelector("#about-btn")
 
   title.addEventListener("click", () => {
     myPageHandler.setHomePage();
@@ -72,7 +69,4 @@ class pageHandler {
     myPageHandler.setMenuPage();
   });
 
-  aboutBtn.addEventListener("click", () => {
-    myPageHandler.setAboutPage();
-  });
 })();

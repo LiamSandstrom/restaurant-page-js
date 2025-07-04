@@ -1,5 +1,5 @@
-import rest1 from "./restaurant-1.jpg";
 import { page } from "./page.js";
+import image from "./restaurant-1.jpg";
 
 export class homepage extends page {
   #restImg;
@@ -10,11 +10,8 @@ export class homepage extends page {
   }
 
   render() {
-    if(!super.render()) return;
-
     //if already rendered
-
-    this.#restImg = new Image();
+    if(!super.render()) return;
 
     //create div
     this.getDiv().classList.add("home-container");
@@ -26,7 +23,8 @@ export class homepage extends page {
     this.getDiv().appendChild(this.#title);
 
     //create img
-    this.#restImg.src = rest1;
+    this.#restImg = new Image();
+    this.#restImg.src = image;
     this.#restImg.classList.add("home-img");
     this.#restImg.classList.add("full-img");
     this.getDiv().appendChild(this.#restImg);
