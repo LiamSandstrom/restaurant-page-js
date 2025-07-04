@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root{
+    --text-color: rgb(242, 239, 239);
+}
+
 body{
     background-color: black;
     margin: 0;
@@ -28,7 +32,7 @@ nav{
 .home-container h1{
     position: absolute;
     z-index: 1;
-    color: white;
+    color: var(--text-color);
     font-size: 2.5rem;
 }
 
@@ -59,8 +63,10 @@ nav{
 }
 
 .footer{
-    height: 200px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    color: var(--text-color);
 }
