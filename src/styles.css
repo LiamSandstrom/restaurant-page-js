@@ -104,6 +104,67 @@ button:hover {
   object-position: center center;
   height: calc(100vh - var(--footer-height));
 }
+
+/*----- booking page ----- */
+.booking-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-form{
+  position: absolute;
+  width: 320px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px;
+  outline: 2px solid grey;
+}
+
+.booking-form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.booking-form input {
+  height: 30px;
+  width: 100%;
+  border: none;
+  outline: 2px solid rgba(0, 0, 0, 0.232);
+  border-radius: 5px;
+  flex-basis: auto;
+}
+
+.booking-form input:focus, .booking-form input:active{
+  outline-color: blue;
+}
+
+.booking-form label{
+  width: 100px;
+  align-self: flex-start;
+}
+
+.booking-form .people-input{
+  width: 50px;
+  align-self: flex-start ;
+}
+
+.booking-form button{
+  align-self: center;
+  color: black;
+  outline-color: black;
+  width: 100%;
+}
+
   
 /* ----- footer ----- */
 .footer {

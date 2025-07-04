@@ -7,8 +7,6 @@ export class homepage extends page {
 
   constructor() {
     super();
-    this.remove = this.remove.bind(this);
-    this.render = this.render.bind(this);
   }
 
   render() {

@@ -6,6 +6,8 @@ export class page {
     this.#div = document.createElement("div");
     this.#content = document.querySelector("#content");
     this.fadeIn = this.fadeIn.bind(this);
+    this.render = this.render.bind(this);
+    this.remove = this.remove.bind(this);
   }
 
   render() {
