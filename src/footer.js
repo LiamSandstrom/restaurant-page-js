@@ -1,5 +1,3 @@
-const content = document.querySelector("#content");
-
 export function renderFooter(){
 
     //create div
@@ -16,5 +14,5 @@ export function renderFooter(){
     number.textContent = "+123 456 789"
     div.appendChild(number);
 
-    content.appendChild(div);
+    document.body.appendChild(div);
 }

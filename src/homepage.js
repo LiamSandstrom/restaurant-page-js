@@ -1,24 +1,40 @@
-import { renderFooter } from "./footer";
 import rest1 from "./restaurant-1.jpg";
-const content = document.querySelector("#content");
 
-export function renderHomepage() {
-  const restImg = new Image();
+export class homepage {
+  #homeDiv;
+  #restImg;
+  #title;
 
-  //create div
-  const homeDiv = document.createElement("div");
-  homeDiv.classList.add("home-container");
-  content.appendChild(homeDiv);
+  constructor() {
+    this.content = document.querySelector("#content");
+    this.remove = this.remove.bind(this);
+    this.render = this.render.bind(this);
+  }
 
-  //create title
-  const title = document.createElement("h1");
-  title.textContent = "Welcome to [Restaurant]";
-  homeDiv.appendChild(title);
+  render() {
+    this.#restImg = new Image();
 
-  //create img
-  restImg.src = rest1;
-  restImg.classList.add("home-img");
-  restImg.classList.add("full-img");
-  homeDiv.appendChild(restImg);
-  renderFooter();
+    //create div
+    this.#homeDiv = document.createElement("div");
+    this.#homeDiv.classList.add("home-container");
+    this.content.appendChild(this.#homeDiv);
+    setTimeout(this.fadeIn, 10);
+
+    //create #title
+    this.#title = document.createElement("h1");
+    this.#title.textContent = "Welcome to [Restaurant]";
+    this.#homeDiv.appendChild(this.#title);
+
+    //create img
+    this.#restImg.src = rest1;
+    this.#restImg.classList.add("home-img");
+    this.#restImg.classList.add("full-img");
+    this.#homeDiv.appendChild(this.#restImg);
+  }
+
+  remove() {
+    this.content.removeChild(this.#homeDiv);
+  }
+
+  getDiv = () => this.#homeDiv;
 }
