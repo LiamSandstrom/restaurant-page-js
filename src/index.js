@@ -2,5 +2,9 @@ import "./styles.css";
 import {renderHomepage} from "./homepage.js"
 
 
-renderHomepage()
+function init(){
+    renderHomepage();
+}
+
+init();
 
