@@ -1,3 +1,6 @@
 import "./styles.css";
+import {renderHomepage} from "./homepage.js"
 
-console.log("hai wrld")
+
+renderHomepage()
+
