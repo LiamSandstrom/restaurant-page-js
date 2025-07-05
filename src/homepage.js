@@ -9,10 +9,7 @@ export class homepage extends page {
     super();
   }
 
-  render() {
-    //if already rendered
-    if(!super.render()) return;
-
+  firstRender(){
     //create div
     this.getDiv().classList.add("home-container");
     this.getDiv().classList.add("page");

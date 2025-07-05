@@ -1,6 +1,7 @@
 export class page {
   #div;
   #content;
+  #hasRendered = false;
 
   constructor() {
     this.#div = document.createElement("div");
@@ -12,12 +13,13 @@ export class page {
 
   render() {
     this.fadeIn();
-    if (this.#div.children.length >= 1) {
-      this.#content.appendChild(this.#div);
-      return false;
+
+    if(!this.#hasRendered){
+      this.firstRender();
+      this.#hasRendered = true;
     }
+
     this.#content.appendChild(this.#div);
-    return true;
   }
 
   remove() {
@@ -26,6 +28,9 @@ export class page {
 
   getDiv = () => this.#div;
   getContent = () => this.#content;
+  firstRender() {
+    throw new Error("FirstRender() must be implemented by subclass")
+  }
 
   fadeIn() {
     if (this.#div == undefined) return;
