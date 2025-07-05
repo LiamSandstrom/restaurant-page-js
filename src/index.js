@@ -5,52 +5,38 @@ import { menu } from "./menu.js";
 import { renderFooter } from "./footer";
 
 class pageHandler {
-  constructor() {
-    this.homepage = new homepage();
-    this.booking = new booking();
-    this.menu = new menu(); 
+  #pages = {};
+  #currentPage;
+
+  constructor(pages) {
+    this.#pages = pages;
+    this.#currentPage = null;
   }
 
-  init() {
-    this.setHomePage();
-    renderFooter();
+  init(pageKey = "home") {
+    this.changePage(pageKey);
   }
 
-  setBookingPage() {
-    if (this.currentPage === this.booking) return;
-    this.changePage(this.booking);
-    console.log("changed to booking");
-  }
+  changePage(pageKey) {
+    const newPage = this.#pages[pageKey];
+    if(newPage == this.#currentPage || newPage == null) return;
 
-  setHomePage() {
-    if (this.currentPage === this.homepage) return;
-    this.changePage(this.homepage);
-    console.log("changed to home");
-  }
-
-  setMenuPage() {
-    if (this.currentPage === this.menu) return;
-    this.changePage(this.menu);
-    console.log("changed to menu");
-  }
-
-  setAboutPage(){
-    if(this.currentPage === this.about) return;
-    this.changePage(this.about);
-    console.log("changed to about");
-  }
-
-  changePage(newPage) {
-    if (this.currentPage != null) {
-      this.currentPage.remove();
+    if (this.#currentPage != null) {
+      this.#currentPage.remove();
     }
-    this.currentPage = newPage;
-    this.currentPage.render();
+    this.#currentPage = newPage;
+    this.#currentPage.render();
   }
 }
-  const myPageHandler = new pageHandler();
-  myPageHandler.init();
 
+  const pages = {
+    home : new homepage(),
+    menu : new menu(),
+    booking : new booking()
+  }
+  const myPageHandler = new pageHandler(pages);
+  myPageHandler.init();
+  renderFooter();
 
 (() => {
   const title = document.querySelector("#title");
@@ -58,15 +44,15 @@ class pageHandler {
   const menuBtn = document.querySelector("#menu-btn")
 
   title.addEventListener("click", () => {
-    myPageHandler.setHomePage();
+    myPageHandler.changePage("home");
   });
 
   bookingBtn.addEventListener("click", () => {
-    myPageHandler.setBookingPage();
+    myPageHandler.changePage("booking");
   });
 
   menuBtn.addEventListener("click", () => {
-    myPageHandler.setMenuPage();
+    myPageHandler.changePage("menu");
   });
 
 })();
