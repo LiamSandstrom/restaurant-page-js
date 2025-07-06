@@ -54,5 +54,5 @@ class pageHandler {
   menuBtn.addEventListener("click", () => {
     myPageHandler.changePage("menu");
   });
-
+  console.log("test")
 })();
