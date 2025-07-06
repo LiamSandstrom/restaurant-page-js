@@ -51,5 +51,7 @@ class pageHandler {
     myPageHandler.changePage("booking");
   });
 
-  console.log("test")
+  menuBtn.addEventListener("click", () => {
+    myPageHandler.changePage("menu");
+  });
 })();
